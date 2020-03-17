@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: Lato,sans-serif;
+    text-decoration: none;
+    color: #000;
+
+}
+.top{
+    width: 100%;
+    height: 77px;
+    border-bottom: 1px solid #ccc;
+}
+
+.top ._top{
+    /* border: 1px solid #ccc; */
+    width: 1170px;
+    height: 44px;
+    display: flex;
+    margin: auto;
+    position: relative;
+    font-size: 14px;
+}
+
+.content{
+    display: flex;
+    position: absolute;
+    right: 60px;
+    bottom: -10px;
+}
+
+.account{
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    padding: 0px;
+}
+
+.shape{
+    position: absolute;
+    right: 55px;
+    bottom: 10px;
+    color: #000;
+    background-color: #ffe605;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.top a{
+    padding: 0 15px;
+}
+
+a:hover{
+    color: #ff0;
+}
+
+.kardone{
+    height: 65px;
+    padding: 65px;
+}
+
+.txt{
+    width: 822px;
+    height: 65px;
+    padding: 10px 174px;
+    position: relative;
+    display: flex;
+}
+
+.txt .logo{
+    width: 192px;
+    height: 57px;
+    position: absolute;
+    left: 80px;
+}
+
+.txt img{
+    width: 181px;
+    height: 29px;
+}
+
+.logo a{
+    color: #0d0d0d;
+    letter-spacing: 4.2px;
+    width: 192px;
+    height: 18px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.home{
+    position: absolute;
+    font-size: 16px;
+    margin: auto;
+    right: 0;
+    padding: 25px;    
+}
+
+.home span{
+    height: 34px;
+    padding: 5px;
+}
+
+.home span:hover{
+    border-bottom: 3px solid #000;
+}
+
+.bigimg{
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+._left img{
+    width: 830px;
+    height: 540px;
+}
+
+._right{
+    width: 555px;
+    height: 480px;
+    right: 0;
+    position: absolute;
+    /* background-color: #ffe605; */
+    top: 60px;
+}
+
+._right p{
+    font-size: 70px;
+    padding-bottom: 20px;
+    padding: 0 40px;
+}
+
+._right h3{
+    color: #ffe605;
+    font-size: 55px;
+    padding: 20px 40px;
+    padding-bottom: 45px;
+}
+
+._right button{
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #000;
+    text-align: center;
+    width: 195px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 15px 38px;
+}
+
+._right button:hover{
+    border: 1px solid #ffe605;
+    color: #000;
+    background-color: #ffe605;
+}
+
+.food{
+    width: 100%;
+    margin-top: 100px;
+    justify-content: center;
+    display: flex;
+}
+
+.item{
+    width: 248px;
+    height: 258px;
+    position: relative;
+    text-align: center;
+}
+
+.item img{
+    width: 180px;
+    height: 180px;
+    padding: 15px;    
+    position: relative;
+}
+
+.item p{
+    width: 188px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    bottom: 110px;
+    font-size: 28px;
+}
+
+.food .item p:hover{
+    color: #ffe605;
+}
+
+.photo{
+    width: 100px;
+    height: 730px;
+    display: flex;
+    margin: auto;
+}
