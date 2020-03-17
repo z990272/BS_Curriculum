@@ -31,7 +31,8 @@ a:hover{
 }
 
 h1{
-    padding: 70px 0;
+    padding-top: 150px;
+    padding-bottom: 70px;
     width: 100%;
     text-align:  center;
     font-family: Microsoft JhengHei;
