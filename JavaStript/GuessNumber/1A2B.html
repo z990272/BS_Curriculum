@@ -19,6 +19,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <h1>1 A 2 B</h1>
+                <br>
                 <div class="btn-group btn-group-justified">
                     <a id="start" type="button" class="btn btn-default" onclick="Start()">開始</a>
                     <a id="restart" type="button" class="btn btn-default" onclick="Start()">放棄重來</a>
@@ -34,30 +36,24 @@
                     </span>
                 </div>
             </div>
-            <p id="p"></p>
         </div>
     </div>
 
     <script>
-        var p = document.getElementById('p');
         var guess = document.getElementById('guessResult');
-        var random;
-
+        var random = new Array(4);
+        var temp;
         function Start() {
-            p.innerHTML = null;
-            random = Math.floor(Math.random() * 10000).toString();
-
-            while (random.length != 4) {
-                random = Math.floor(Math.random() * 10000).toString();
-            }
-
-            for (i = 0; i < 4; i++) {
-                for (j = 0; j < i; j++) {
-                    if (random[i] == random[j]) {
-                        random = Math.floor(Math.random() * 10000).toString();
-                    }
+            for (i = 0; i < random.length; i++) {
+                temp = Math.floor(Math.random() * 10);
+                if (random.includes(temp)) {
+                    temp = Math.floor(Math.random() * 10);
+                }
+                else{
+                    random[i] = temp;
                 }
             }
+
             alert('遊戲開始');
             guess.innerHTML = null;
         }
@@ -67,12 +63,12 @@
             var user = document.getElementById('userGuess').value.toString();
             var input = document.getElementById('userGuess');
 
-            if(random == null){
+            if (random == null) {
                 alert('請先開始遊戲');
                 return;
             }
 
-            if(user.length != 4){
+            if (user.length != 4) {
                 alert('輸入數字長度錯誤');
                 input.value = null;
                 return;
@@ -119,7 +115,7 @@
         }
 
         function Answer() {
-            p.innerHTML = `答案是 ： ${random}`;
+            alert(`答案是 ： ${random}`);
         }
     </script>
 
