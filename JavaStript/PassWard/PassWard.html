@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Guess PassWard</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .col-12 {
+            text-align: center;
+        }
+
+        h2 {
+            line-height: 70px;
+        }
+
+        .start {
+            width: 40%;
+            font-size: 28px;
+            line-height: 40px;
+        }
+
+        input {
+            width: 40%;
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        .btn {
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .btn button {
+            margin: 5px;
+            width: 80px;
+            height: 80px;
+            font-size: 32px;
+        }
+
+        .btn .x {
+            color: #f00;
+        }
+
+        .btn .v {
+            color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <h1>終極密碼</h1>
+            <div class="col-12">
+                <button class="start" id="start" onclick="Start()">開始</button>
+            </div>
+            <div class="col-12">
+                <h2 id="h2"></h2>
+            </div>
+            <div class="col-12">
+                <input type="text" id="input">
+            </div>
+            <div class="btn">
+                <button onclick="Num(this)">1</button>
+                <button onclick="Num(this)">2</button>
+                <button onclick="Num(this)">3</button>
+                <button onclick="Num(this)">4</button>
+                <button onclick="Num(this)">5</button>
+                <button onclick="Num(this)">6</button>
+                <button onclick="Num(this)">7</button>
+                <button onclick="Num(this)">8</button>
+                <button onclick="Num(this)">9</button>
+                <button onclick="Reset()" class="x">X</button>
+                <button onclick="Num(this)">0</button>
+                <button onclick="Check()" class="v">V</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var min, max, random;
+        var h2 = document.getElementById('h2');
+        var input = document.getElementById('input');
+        var start = document.getElementById('start');
+
+        function Start() {
+            random = Math.floor(Math.random() * 100);
+            min = 0;
+            max = 100;
+            start.innerText = '遊戲進行中';
+            h2.innerHTML = `請輸入 ${min} ~ ${max} 的數值`;
+        }
+
+        function Num(a) {
+            input.value += a.innerText;
+        }
+
+        function Reset() {
+            input.value = null;
+        }
+
+        function Check() {
+            if (min == null || max == null) {
+                alert('請先開始遊戲');
+            }
+
+            if (input.value >= max || input.value <= min) {
+                alert('輸入範圍錯誤');
+                input.value = null;
+                return;
+            }
+
+            if (input.value == random) {
+                alert('你猜到了');
+                h2.innerHTML = `請按 重新開始`;
+                start.innerText = '重新開始';
+
+            }
+
+            if (input.value > random) {
+                max = input.value;
+                h2.innerHTML = `請輸入 ${min} ~ ${max} 的數值`;
+            }
+
+            if (input.value < random) {
+                min = input.value;
+                h2.innerHTML = `請輸入 ${min} ~ ${max} 的數值`;
+            }
+
+            input.value = null;
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

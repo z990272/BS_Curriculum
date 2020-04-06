@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+
+        var header = ['國家', '確診', '死亡', '治癒'];
+
+        var Global = [
+            ['台灣', 306, 5, 39],
+            ['中國', 82149, 3308, 75898],
+            ['美國', 142895, 2436, 2660],
+        ];
+
+        var ipt_header = document.querySelectorAll('thead>tr>td');
+        for (i = 0; i < header.length; i++) {
+            ipt_header[i].textContent = header[i];
+        }
+
+        for (i = 1; i <= Global.length; i++) {
+
+            var txt_content = document.querySelectorAll(`tbody>tr:nth-child(${i}) td`);
+
+            // if (i == 1)
+            //     var txt_content = document.querySelectorAll('tbody>tr:nth-child(1) td');
+
+            // if (i == 2)
+            //     var txt_content = document.querySelectorAll('tbody>tr:nth-child(2) td');
+
+            // if (i == 3)
+            //     var txt_content = document.querySelectorAll('tbody>tr:nth-child(3) td');
+
+            for (j = 0; j < header.length; j++) {
+                txt_content[j].textContent = Global[i - 1][j];
+            }
+        }
+    </script>
+</body>
+
+</html>

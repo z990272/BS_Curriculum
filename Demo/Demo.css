@@ -1,0 +1,316 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Work Sans";
+}
+a, a:hover{
+    text-decoration: none;
+    color: #666;
+}
+
+.TopMenu{
+    padding: 10px 0 6px;
+}
+
+.TopMenu .container .item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.TopMenu .search{
+    display: flex;
+    align-items: center;
+}
+
+.Logo .container{
+    text-align: center;
+    justify-content: space-around;
+}
+
+.Logo .container .logo-img,
+.Logo .container .link{
+    margin: 40px 0 10px;
+}
+
+.breadcrumb{
+    background-color: #fff;
+    margin: 0 155px;
+    justify-content: center;
+}
+
+.breadcrumb ol{
+    text-align: center;
+}
+
+.breadcrumb .active a{
+    color: #ffa396;
+}
+
+.BigImg img,
+.HomePage .img img{
+    width: 100%;
+}
+
+.BigImg .txt,
+.HomePage .txt{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.BigImg .item,
+.HomePage .item{
+    position: relative;
+}
+
+.BigImg .txt h3{
+    top: 0;
+    margin: 15px 0;
+    padding-top: 34px 0 0;
+}
+
+.BigImg .btn{ 
+    padding: 25px 40px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    position: absolute;
+    bottom: 0;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.ShowCase{  
+    padding: 100px 0;
+    text-align: center;
+}
+
+.ShowCase .col-12,
+.Footer .col-12{
+    padding: 0 30px;
+}
+
+.ShowCase  .col-12 a{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #b9b9b9;
+    border-top: 1px solid;
+    padding: 37px 0 35px;
+}
+
+.ShowCase h3{
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.ShowCase p{
+    font-size: 20px;
+    margin: 4px 0 15px;
+    color: #333439;
+}
+
+.HomePage{
+    margin-bottom: 54px;
+}
+
+.HomePage .txt h2{
+    margin: 15px 0 0;
+    font-size: 100px;
+    color: #fff;
+}
+
+.HomePage .txt h3{
+    font-size: 90px;
+    color: #181a1f;
+}
+
+.HomePage .txt h4{
+    margin: 10px 0 15px;
+    padding-left: 5px;
+    font-size: 30px;
+    color: #181a1f;
+}
+
+.HomePage .txt .btn,
+.Product .txt .btn,
+.Blog .txt .btn,
+.Featured .txt .btn{
+    margin: 15px 8px;
+    padding: 7px 19px;
+    font-family: 'Lato',"sans-serif";
+    color: #181a1f;
+    border: 2px solid #181a1f;
+}
+
+.Browse .heading,
+.Product .heading,
+.Blog .heading,
+.Featured .heading,
+.Instagram .heading,
+.Offer .item{
+    width: 100%;
+    text-align: center;
+}
+
+.Browse .heading h2, 
+.Product .heading h2,
+.Blog .heading h2,
+.Featured .heading h2,
+.Instagram .heading h2{
+    margin: 30px 0;
+    font-size: 40px;
+}
+
+.Browse .col-12,
+.Product .col-12{
+    padding: 0;
+}
+
+.Browse .txt{
+    text-align: center;
+    color: #181a1f;
+    padding: 20px 20px 65px;
+}
+
+.Browse .txt h4{
+    font-size: 24px;
+    margin: 15px 0;
+    padding: 24px 0 4px;
+}
+
+.Browse .txt p{
+    font-family: 'Lota','sans-serif';
+    margin: 15px 0;
+    font-size: 15px;
+    padding: 7px 19px;
+    border: 2px solid #181a1f;
+    display: inline-block;
+}
+
+.Product .item{
+    padding: 0 30px;
+}
+
+.Product .txt,
+.Featured .txt{
+    text-align: center;
+    padding: 11px 0;
+    font-size: 20px;
+}
+
+.Product .txt .price,
+.Featured .txt .price{
+    font-size: 24px;
+    width: 100%;
+    margin: 10px 0 20px;
+    display: block;
+}
+
+.Blog .col-12{
+    margin: 33px 0 0;
+    padding: 0 30px;
+
+}
+
+.Blog .item{
+    text-align: center;
+}
+
+.Blog .item .date{
+    color: #181a1f;
+    font-size: 24px;
+    margin: 15px 0 8px;
+}
+
+.Blog .item p{
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.Blog .txt h3{
+    margin: 27px 0 7px;
+    font-size: 20px;
+    color: #181a1f;
+}
+
+.Blog .txt p{
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #181a1f;
+}
+
+.Offer .item h3,
+.Offer .item h4{
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.Offer{
+    background-color: #e7f5f7;
+}
+
+.Footer{
+    font-family: 'Lato','Sans-serif';
+    padding: 78px 0 0;
+    background-color: #181a1f;
+    color: #fff;
+}
+
+.Footer .item .img{
+    margin: 15px 0 10px;
+}
+
+.Footer .item h3{
+    font-size: 18px;
+    margin: 15px 0 26px;
+    font-family: "Work Sans";
+}
+
+.Footer .txt p{
+    margin: 15px 0;
+    font-size: 15px;
+    color: #ddd;
+}
+
+.Footer .item span{
+    display: block;
+}
+
+.Footer .item a{
+    font-family: 'Lato',"sans-serif";
+    display: inline-block;
+    color: #ddd;
+    padding-bottom: 10px;
+}
+
+.mapouter {
+    margin-left: 20px;
+    text-align: center;
+    height: 300px;
+    width: 100%;
+}
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 300px;
+    width: 100%;
+}
+
+#drop a{
+    border: 1px solid rgb(228, 224, 224);
+}
+#drop a:hover{
+    color: rgb(235, 125, 143);
+    background-color: white;
+}
+#dropdownMenuButton{
+    color: black;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    border: 2px solid rgb(228, 224, 224);
+}
+
