@@ -46,7 +46,7 @@
         function Start() {
             for (i = 0; i < random.length; i++) {
                 temp = Math.floor(Math.random() * 10);
-                if (random.includes(temp)) {
+                if (random.includes(temp) || temp == '') {
                     temp = Math.floor(Math.random() * 10);
                 }
                 else{
