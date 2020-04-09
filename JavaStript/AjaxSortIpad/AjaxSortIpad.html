@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortIpad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        table {
+            border: 1px solid darkgreen;
+            margin: auto;
+            text-align: center;
+        }
+
+        thead {
+            text-align: center;
+        }
+
+        img {
+            width: 10%;
+        }
+
+        .pic {
+            width: 100px;
+        }
+
+        th:hover {
+            cursor: pointer;
+        }
+
+        #title {
+            text-align: center;
+            padding: 20px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="msg"></div> -->
+    <div class="container">
+        <div class="row">
+            <div id="title"></div>
+            <div>
+                <table border="1">
+                    <thead>
+                        <th id="sortSku">代碼</th>
+                        <th id="sortPrice">價格</th>
+                        <th id="sortstorage">容量</th>
+                        <th>機型</th>
+                        <th id="sortpicture">圖片</th>
+                    </thead>
+                    <tbody id="data">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var data = document.getElementById('data');
+        var title = document.getElementById('title');
+        var h1 = document.createElement('h1');
+        h1.innerHTML = 'Apple Shop';
+
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            title.appendChild(h1);
+
+                xhr.onload = function () {
+                    // document.getElementById('msg').innerHTML = this.responseText;
+                    var ipad = JSON.parse(this.responseText);
+                    var sortSku = document.getElementById('sortSku');
+                    var sortPrice = document.getElementById('sortPrice');
+                    var sortStorage = document.getElementById('sortstorage');
+                    var sortPicture = document.getElementById('sortpicture')
+
+                    Show(ipad);
+                    sortSku.onclick = function () {
+                        data.innerHTML = '';
+                        Show(ipad.sort(sortsku));
+                    }
+                    sortPrice.onclick = function () {
+                        data.innerHTML = '';
+                        Show(ipad.sort(sortprice));
+                    }
+                    sortStorage.onclick = function () {
+                        data.innerHTML = '';
+                        Show(ipad.sort(sortstorage));
+
+                    }
+                    sortPicture.onclick = function () {
+                        data.innerHTML = '';
+                        Show(ipad.sort(sortpicture));
+
+                    }
+                }
+                xhr.open("GET", 'http://127.0.0.1:5501/AjaxSortIpad/IPad.json');
+                xhr.send();
+
+                function sortsku(x, y) {
+                    return (x.sku > y.sku) ? 1 : -1
+                }
+
+                function sortprice(x, y) {
+                    return (x.price > y.price) ? 1 : -1
+                }
+
+                function sortstorage(x, y) {
+                    return (x.storage < y.storage) ? 1 : -1
+                }
+
+                function sortpicture(x, y) {
+                    return (x.picture < y.picture) ? 1 : -1
+                }
+
+            function Show(ipad) {
+                for (let i in ipad) {
+                    let tr = document.createElement('tr');
+                    for (const j in ipad[i]) {
+                        let td = document.createElement('td');
+                        if (j == 'picture') {
+                            td.innerHTML = `<img src="${ipad[i][j]}" alt="圖片損毀" class="pic">`;
+                        } else {
+                            td.innerHTML = ipad[i][j];
+                        }
+                        tr.appendChild(td);
+                    }
+                    data.appendChild(tr);
+                }
+            }
+        }
+
+        // var tabledata = "";
+        // products.forEach(function(str) {
+        //     tabledata += "<tr>";
+        //     tabledata += `<td>${str.sku}</td>`;
+        //     tabledata += `<td>${str.price}</td>`;
+        //     tabledata += `<td>${str.storage}</td>`;
+        //     tabledata += `<td>${str.description}</td>`;
+        //     tabledata += "</tr>";
+        // })
+        // data.innerHTML += tabledata;
+    </script>
+</body>
+</html>
