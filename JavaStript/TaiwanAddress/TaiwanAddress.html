@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Modules/MyHelper.js"></script>
+</head>
+
+<body>
+    <h1>縣市模板</h1>
+
+    <template id="templateTitle">
+        <tr>
+            <th>縣市</th>
+            <th>區域</th>
+            <th>區碼</th>
+        </tr>
+    </template>
+    <template id="templateRow">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+    <script>
+        // let body = document.querySelector('body');
+        let body = $g('body');
+        // let table = document.createElement('table');
+        let table = $c('table');
+        table.setAttribute("border", "2");
+        let thead = $c('thead');
+        let tbody = $c('tbody');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        body.appendChild(table);
+
+        let msg = $g('#msg');
+        window.onload = function () {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    zipcodeArray = JSON.parse(this.responseText);
+
+                    let ZipCode = [];
+                    zipcodeArray.forEach((item) => {
+                        item.AreaList.forEach((area) => {
+                            ZipCode.push({
+                                City: `${item.CityName}`,
+                                Districts: [{ Districts: `${area.AreaName}`, ZipCode: `${area.ZipCode}` }]
+                            });
+                        });
+                    });
+                    addThead();
+                    ZipCode.forEach((item) => {
+                        addTbody(Object.values(item));
+                    });
+
+                } else {
+                    msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
+                }
+                // document.getElementById("msg").innerHTML=this.responseText;
+            }
+            xhr.open("GET", "http://127.0.0.1:5500/TaiwanAddress/TaiwanAddress.json");
+            xhr.send();
+        }
+        function addThead() {
+            let templateTitle = $g("#templateTitle");
+            let cloneContent = templateTitle.content.cloneNode(true);
+            thead.appendChild(cloneContent);
+        }
+
+        function addTbody(rowArray) {
+            let templateRow = $g("#templateRow");
+            let cloneContent = templateRow.content.cloneNode(true);
+            let tds = cloneContent.querySelectorAll('td');
+
+            rowArray.forEach((item, index) => {
+                debugger;
+                if (index == 1) {
+                    debugger; 
+                    item.forEach((content) => {
+                        tds[1].textContent = content.Districts;
+                        tds[2].textContent = content.ZipCode;
+                    });
+                }
+                else{
+                    tds[index].textContent = rowArray[index];
+                }
+                
+            });
+
+            // for(i = 0; i < rowArray.length; i++){
+            //     tds[i].textContent = rowArray[i];
+            // }
+
+            // tds[0].textContent = rowArray[0];
+            // tds[1].textContent = rowArray[1];
+            // tds[2].textContent = rowArray[2];
+            // tds[3].textContent = rowArray[3];
+            // tds[4].textContent = rowArray[4];
+
+            tbody.appendChild(cloneContent);
+        }
+
+    </script>
+</body>
+
+</html>
