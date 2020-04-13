@@ -23,7 +23,7 @@
             map = new google.maps.Map(
                 document.getElementById('map'), { zoom: 15, center: { lat: 24.758, lng: 120.953 } });
 
-            const url = 'http://127.0.0.1:5501/GoogleMapApi/MaskData.json';
+            const url = 'https://findmasks.herokuapp.com/places';
             // map.data.loadGeojson('https://maskmap.azurewebsites.net/api/mask/getmaskstock');
             map.data.loadGeoJson(url);
 
