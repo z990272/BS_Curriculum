@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+ul{
+    background-color: darkblue;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+    margin: 10px auto;
+}
+
+ul li{
+    background-color: lightblue;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    margin: 5px 0;
+    border: 1px solid skyblue;
+}
+
+.empty {
+    background: #DAD4EF;
+}
+
+
+

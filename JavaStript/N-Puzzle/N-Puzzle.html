@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Puzzle</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="N-Puzzle.css">
+</head>
+
+<body onload="SetUp()">
+
+    <h2>N-Puzzle</h2>
+    <div class="container">
+        <form>
+            <input type="radio" name="game" value="3" id="game_1" /> 3 x 3 <br>
+            <input type="radio" name="game" value="4" checked="checked" id="game_2" /> 4 * 4
+        </form>
+        <button onclick="ReSet()">New Game</button>
+        <div>
+            Moves:
+            <span id="moves">0</span>
+        </div>
+
+        <div id="div"></div>
+    </div>
+
+    <script>
+        let move = 0;
+        let col = 0, row = 0;
+        var nArray = new Array();
+
+        function SetUp() {
+            SetId();
+            let list = document.querySelectorAll('li');
+            FillGrid(list, nArray);
+            SetDroppable(list);
+            SetDraggable(list);
+        }
+
+        function ReSet() {
+            nArray = [];
+            move = 0;
+            document.getElementById('moves').innerHTML = move;
+
+            let div = document.getElementById('div');
+            div.innerHTML = '';
+            SetUp();
+        }
+
+        //建 ul>li li的id
+        function SetId() {
+            col = document.querySelector('input[name="game"]:checked').value
+            row = document.querySelector('input[name="game"]:checked').value
+
+            var div = document.getElementById('div');
+            var ul = document.createElement('ul');
+            //建陣列
+            for (i = 1; i <= (col * row) - 1; i++) {
+                nArray.push(i);
+            }
+
+            for (i = 0; i <= nArray.length; i++) {
+                let li = document.createElement('li');
+
+                if (i == nArray.length) {
+                    li.setAttribute("id", `li${i + 1}`);
+                    li.setAttribute('class', 'empty')
+                    li.setAttribute("ondrop", "drop_handler(event)");
+                    li.setAttribute("ondragover", "dragover_handler(event)");
+                    ul.appendChild(li);
+                }
+                else {
+                    if (i == nArray.length - 1) {
+                        li.setAttribute("id", `li${i + 1}`);
+                        li.setAttribute('draggable', 'true');
+                        li.setAttribute('ondragstart', 'dragstart_handler(event)');
+                        li.setAttribute('ondragend', 'dragend_handler(event)');
+                        ul.appendChild(li);
+                    }
+                    else {
+                        li.setAttribute("id", `li${i + 1}`);
+                        ul.appendChild(li);
+                    }
+                }
+            }
+
+            if (col == 3) { ul.style.width = '350px'; }
+            else { ul.style.width = '450px'; }
+            div.appendChild(ul);
+        }
+
+        //放字
+        function FillGrid(items, array) {
+            let shuffled = Shuffle(array);
+
+            items.forEach((item, i) => {
+                if (i == shuffled.length) { item.innerText = ''; }
+                else { item.innerText = shuffled[i]; }
+            })
+        }
+
+        //洗牌
+        function Shuffle(arr) {
+            const copy = [...arr];
+            for (let i = 0; i < copy.length; i++) {
+                let j = parseInt(Math.random() * copy.length);
+                let temp = copy[i];
+                copy[i] = copy[j];
+                copy[j] = temp;
+            }
+            return copy;
+        }
+
+        function SetDroppable(items) {
+            items.forEach((item, i) => {
+                if (!item.innerText) {
+                    item.setAttribute("ondrop", "drop_handler(event);");
+                    item.setAttribute("ondragover", "dragover_handler(event);");
+                    item.setAttribute("class", "empty");
+                }
+                return;
+            })
+        }
+
+        function SetDraggable(items) {
+            items.forEach(item => {
+                item.setAttribute("draggable", "true");
+                item.setAttribute("ondragstart", "dragstart_handler(event)");
+                item.setAttribute("ondragend", "dragend_handler(event)");
+            })
+        }
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
