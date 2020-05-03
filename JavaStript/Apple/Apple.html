@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Apple Products</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .btn-group button {
+            width: 100px;
+            color: white;
+            line-height: 40px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Apple Products</h1>
+        <div class="btn-group d-flex justify-content-center">
+            <button id="iphone" type="button" class="btn-dark" onclick="Create_phone()">iPhone</button>
+            <button id="ipad" type="button" class="btn-dark" onclick="Create_pad()">iPad</button>
+            <button id="mac" type="button" class="btn-dark" onclick="Create_mac()">Mac</button>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <img id="product-img" class="img-fluid" src=""></img>
+            </div>
+            <div class="col-12 col-md-6">
+                <div id="color" class="row"></div>
+                <div id="type" class="row"></div>
+                <div id="price" class="row"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        Product = {
+            iphone: {
+                content: [
+                    { color: '紅色', src: 'iphone-red.png' },
+                    { color: '黃色', src: 'iphone-yellow.png' },
+                    { color: '黑色', src: 'iphone-block.png' },
+                ],
+                price: [
+                    { size: '64GB', fit: 24900 },
+                    { size: '128GB', fit: 26900 },
+                    { size: '256GB', fit: 30400 },
+                ]
+            },
+            ipad: {
+                content: [
+                    { color: '太空灰', src: 'ipad-space.png' },
+                    { color: '銀色', src: 'ipad-silver.png' },
+                    { color: '金色', src: 'ipad-gold.png' },
+                ],
+                price: [
+                    { size: '32GB', fit: 10900 },
+                    { size: '128GB', fit: 13900 },
+                ]
+            },
+            mac: {
+                content: [
+                    { color: '太空灰', src: 'mbp13touch-space.png' },
+                    { color: '銀色', src: 'mbp13touch-silver.png' },
+                ],
+                price: [
+                    { size: '256GB', fit: 51300 },
+                    { size: '512GB', fit: 57300 },
+                    { size: '1TB', fit: 63300 },
+                    { size: '2TB', fit: 75300 },
+                ]
+            }
+        };
+
+        var Img = document.getElementById('product-img');
+        var Color = document.getElementById('color');
+        var Type = document.getElementById('type');
+        var Price = document.getElementById('price');
+
+        function Create_phone() {
+            Img.src = 'iphone11-select-2019-family.png';
+            Reset();
+            ColorTitle();
+            ColorButton('iphone');
+            TypeTitle();
+            TypeButton('iphone');
+            PriceTitle()
+        }
+
+        function Create_pad() {
+            Img.src = 'ipad-hero-unselected-201909_GEO_TW.png';
+            Reset();
+            ColorTitle();
+            ColorButton('ipad');
+            TypeTitle();
+            TypeButton('ipad');
+            PriceTitle()
+        }
+
+        function Create_mac() {
+            Img.src = 'mbp13touch-space-gallery1-201907.png';
+            Reset();
+            ColorTitle();
+            ColorButton('mac');
+            TypeTitle();
+            TypeButton('mac');
+            PriceTitle()
+        }
+
+        function Reset(){
+            Color.innerHTML = '';
+            Type.innerHTML = '';
+            Price.innerHTML = '';
+        }
+
+        function ColorTitle(){
+            let title = document.createElement('div');
+            let h3 = document.createElement('h3');
+            h3.innerText = '顏色';
+            title.className = 'row w-100 d-flex';
+            title.appendChild(h3);
+            Color.appendChild(title);
+        }
+
+        function ColorButton(name){
+            for(let item of Product[name].content){
+                let div = document.createElement('div');
+                let btn = document.createElement('button');
+                btn.style.backgroundColor = 'transparent';
+                btn.style.border = '1.5px solid darkblue';
+                btn.style.margin = '0 20px';
+                btn.style.lineHeight = '40px';
+                btn.style.fontSize = '16px';
+                btn.className = 'color-btn w-100';
+
+                btn.innerText = item.color;
+                div.appendChild(btn);
+                Color.appendChild(div);
+            }
+        }
+
+        function TypeTitle(){
+            let title = document.createElement('div');
+            let h3 = document.createElement('h3');
+            h3.innerText = '規格';
+            title.className = 'row w-100 d-flex';
+            title.appendChild(h3);
+            Type.appendChild(title);
+        }
+
+        function TypeButton(name){
+            for(let item of Product[name].price){
+                let div = document.createElement('div');
+                let btn = document.createElement('button');
+                btn.style.backgroundColor = 'transparent';
+                btn.style.border = '1.5px solid darkblue';
+                btn.style.margin = '0 20px';
+                btn.style.lineHeight = '40px';
+                btn.style.fontSize = '16px';
+                btn.className = 'type-btn w-100';
+
+                btn.innerText = item.size;
+                div.appendChild(btn);
+                Type.appendChild(div);
+            }
+        }
+
+        function PriceTitle(){
+            let title = document.createElement('div');
+            let h3 = document.createElement('h3');
+            h3.innerText = '價格試算';
+            title.className = 'row w-100 d-flex';
+            title.appendChild(h3);
+            Type.appendChild(title);
+        }
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
